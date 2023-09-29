@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PrestationController!
+{% endblock %}
+
+{% block body %}
+	<style>
+		.example-wrapper {
+			margin: 1em auto;
+			max-width: 800px;
+			width: 95%;
+			font: 18px / 1.5 sans-serif;
+		}
+		.example-wrapper code {
+			background: #F5F5F5;
+			padding: 2px 6px;
+		}
+	</style>
+
+	<div class="container-fluid mt-4">
+		<div class="row">
+			<div class="col-9">
+				<p class="fs-3 fw-semibold">
+					Les derniéres demandes de prestation :
+				</p>
+				<table class="table mt-5">
+					<thead>
+						<tr>
+							<th scope="col">Date de la demande</th>
+							<th scope="col">Propriétaire</th>
+							<th scope="col">Nom</th>
+							<th scope="col">Extrait</th>
+							<th scope="col">Rémunération</th>
+							<th scope="col">Action</th>
+						</tr>
+					</thead>
+					<tbody class="table-group-divider .table-hover">
+						{% for prestation in prestations %}
+							<tr>
+								<th scope="row">{{prestation.dateCommande.format('d/m/Y')}}</th>
+								<td>{{prestation.user.nom ?? 'Inconnu'}}</td>
+								<td>{{prestation.nom}}</td>
+								<td>{{prestation.extrait}}</td>
+								<td>{{prestation.remuneration}}
+									€</td>
+								<th>
+									<button type="button" class="btn btn-primary">Voir</button>
+								</th>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+			<div class=" col-3">
+				<p class="fs-4 fw-semibold">Bienvenue au dernier utilisateur inscrit</p>
+				<p class="ml-4 fs-5">{{ lastUser }}</p>
+			</div>
+		</div>
+	</div>
+{% endblock %}

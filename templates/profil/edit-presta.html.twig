@@ -1,0 +1,23 @@
+{% extends 'profil/base.html.twig' %}
+
+{% block content %}
+	<br class"mt-5">
+	<div class="bg-white container item-center">
+		<div class="col-md-6 offset-md-3 mt-5" method="post">
+			<div class="text-center">
+				<div class="fs-3 bolder">Ajouter une prestation</div>
+			</div>
+			<div class="m-auto mt-5">
+				{{ form_start(form) }}
+				{{ form_row(form.nom) }}
+				{{ form_row(form.extrait)}}
+				{{ form_row(form.description) }}
+				{{ form_row(form.remuneration)}}
+				{{ form_row(form.tel)}}
+				<button type="submit" class="btn btn-success">Valider</button>
+				{{ form_end(form) }}
+
+			</div>
+		</div>
+	</div>
+{% endblock %}
